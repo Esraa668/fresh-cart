@@ -1,0 +1,9 @@
+.btn-main {
+  width: 50%;
+  text-align: center;
+}
+.full {
+  &:hover {
+    color: red;
+  }
+}

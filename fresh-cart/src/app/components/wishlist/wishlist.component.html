@@ -1,0 +1,25 @@
+<section class="w-75 mx-auto py-4" *ngIf="products.length > 0">
+    <div class="row g-4">
+        <div class="col-sm-6 col-md-4 col-lg-4 col-xl-3" *ngFor="let product of products ">
+            <div class="product h-100 position-relative">
+                <i class="fa-solid fa-xmark heart position-absolute" role="button"
+                    (click)="removeItem(product._id)"></i>
+                <header [routerLink]="['/details', product._id]">
+                    <img [src]="product.imageCover" [alt]="product.title" class="w-100" [title]="product.title">
+                    <h3 class="small">{{ product.title }}</h3>
+                    <div class="d-flex align-items-center justify-content-between py-1">
+                        <span>{{ product.price | currency: 'E£' }}</span>
+                        <p class="mb-0">
+                            <i *ngFor="let star of [1, 2, 3, 4, 5]" class="fas fa-star"
+                                [ngClass]="{'rating-color': product.ratingsAverage >= star}"></i>
+                            <span>{{ product.ratingsAverage }}</span>
+                        </p>
+                    </div>
+                </header>
+                <footer>
+                    <button (click)="addProduct(product._id, btn)" class="btn-main" #btn>+Add to Cart</button>
+                </footer>
+            </div>
+        </div>
+    </div>
+</section>

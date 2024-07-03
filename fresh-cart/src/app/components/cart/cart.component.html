@@ -1,0 +1,59 @@
+<section class="w-75 mx-auto rounded shadow bg-main-light p-3 my-4 " *ngIf="cart;else msg">
+
+    <!---->
+    <h1 class="h2 text-main">Shop Cart:</h1>
+
+    <div *ngFor="let product of cart.products" class="row border-bottom py-2">
+        <div class="col-md-2">
+            <img [src]="product.product.imageCover" class="w-100" [alt]="product.product.title">
+        </div>
+        <div class="col-md-10 d-flex justify-content-between align-items-center">
+
+
+            <div>
+                <h3 class="h6"> {{product.product.title}}</h3>
+
+                <p class="text-main">Price: {{ product.price| currency: 'EGP ' }}</p>
+                <button (click)="removeItem(product.product._id,remove)" class="btn-main m-1 p-2 " #remove><i
+                        class="fas fa-trash-can p-1"></i>Remove</button>
+
+
+
+
+            </div>
+            <div>
+                <button (click)="changeCount( product.product._id, product.count - 1,btnChange1,btnChange2)"
+                    class="btn btn-sm border-success" #btnChange1>-</button>
+                <span class="p-2">{{product.count}}</span>
+                <button (click)="changeCount( product.product._id ,product.count + 1,btnChange1,btnChange2) "
+                    class="btn btn-sm border-success" #btnChange2>+</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- total price -->
+    <div class="d-flex justify-content-between align-items-center row">
+
+        <div class="col-md-12 col-xl-3  ">
+            <button class="text-main btn-main  text-center mb-0 " [routerLink]="['/Payment',cart._id]">Online
+                Payment <img src="./assets/images/visa-1.svg" alt=""></button>
+        </div>
+        <div class="col-md-12 col-xl-3">
+            <p class="text-main btn-main  text-center mb-0  ms-auto fit mt-0">
+                Total Price: {{ cart.totalCartPrice | currency: 'EGP ' }}
+            </p>
+        </div>
+    </div>
+
+    <button (click)="clear()" class="fit mx-auto text-center bg-danger d-block btn mt-2 my-2"> Clear Cart<i
+            class="fa-solid fa-trash-arrow-up px-1"></i></button>
+</section>
+
+<ng-template #msg>
+    <div class="text-center pt-0 mb-5">
+
+        <img src="./assets/images/image.png" alt="cart empty">
+        <h4 class="text-main mt-2"> Your Cart Is Free Shop Now!..</h4>
+
+    </div>
+</ng-template>

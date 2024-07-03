@@ -1,0 +1,72 @@
+<div id="carouselExampleFade" class="carousel slide carousel-fade w-75 mx-auto py-3 h-100" data-bs-ride="carousel">
+  <div class="carousel-inner w-100">
+    <div class="carousel-item  w-100 rounded-3" data-bs-interval="2000">
+      <img src="./assets/images/slide-2.jpeg" class="d-block w-100" alt="Slide 2" height="400">
+    </div>
+    <div class="carousel-item  active w-100 rounded-3 " data-bs-interval="2000">
+      <img src="./assets/images/slide-1.jpeg" class="d-block w-100 " alt="Slide 1" height="400">
+    </div>
+
+    <div class="carousel-item  w-100 rounded-3" data-bs-interval="2000">
+      <img src="./assets/images/main-slider-2.jpeg" class="d-block w-100" alt="Slide 2" height="400">
+    </div>
+    <div class="carousel-item  w-100 rounded-3" data-bs-interval="2000">
+      <img src="./assets/images/main-slider-3.jpeg" class="d-block w-100" alt="Slide 2" height="400">
+    </div>
+    <div class="carousel-item  w-100 rounded-3" data-bs-interval="2000">
+      <img src="./assets/images/main-slider-1.jpeg" class="d-block w-100" alt="Slide 2" height="400">
+    </div>
+
+  </div>
+  <button class="carousel-control-prev  " type="button" data-bs-target="#carouselExampleFade" data-bs-slide="prev ">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>
+
+<section class="py-4 w-90 mx-auto" *ngIf="categories.length >0 ">
+  <h2> Popular products :</h2>
+  <owl-carousel-o [options]="categoriesOptions">
+
+    <ng-container *ngFor="let cat of categories" class="active">
+      <ng-template carouselSlide>
+        <img [src]="cat.image" [alt]="cat.name" [title]="cat.name" height="300">
+        <h3 class="h6">{{cat.name}}</h3>
+      </ng-template>
+    </ng-container>
+
+  </owl-carousel-o>
+</section>
+<section class="w-75 mx-auto py-4" *ngIf="products.length > 0">
+  <h2 class="m-3 text-main">Popular products :</h2>
+  <div class="row g-4">
+    <div class="col-sm-6 col-md-4 col-lg-4 col-xl-3" *ngFor="let product of products | slice:6:18" role="button">
+      <div class="product h-100 position-relative">
+        <i class="fa-solid fa-heart heart position-absolute" (click)="AddTofav(product._id)"></i>
+        <div class="item"></div>
+        <header>
+          <div [routerLink]="['/details', product._id]">
+            <img [src]="product.imageCover" [alt]="product.title" class="w-100 " [title]="product.title">
+            <h3 class="small">{{product.title | cuttext: 3}}</h3>
+            <h4 class="h6 text-main">{{product.category.name}}</h4>
+          </div>
+          <div class="d-flex align-items-center justify-content-between py-1">
+            <span>{{product.price | currency: 'E£'}}</span>
+            <p class="mb-0">
+              <i *ngFor="let star of [1, 2, 3, 4, 5]" class="fas fa-star"
+                [ngClass]="{'rating-color': product.ratingsAverage >= star}"></i>
+              <span>{{product.ratingsAverage}}</span>
+            </p>
+          </div>
+        </header>
+        <footer>
+          <button (click)="addProduct(product._id, btn)" class="btn-main" #btn>+Add to Cart</button>
+        </footer>
+      </div>
+    </div>
+  </div>
+</section>
