@@ -1,0 +1,40 @@
+<section *ngIf="details._id" class="w-75 mx-auto m-5 p-4 shadow">
+    <div class="row align-items-center g-4  mx-auto">
+        <div class="col-md-3">
+
+            <owl-carousel-o [options]="detailsOptions">
+
+                <ng-container *ngFor="let slide of details.images">
+                    <ng-template carouselSlide>
+                        <img [src]="slide" class="w-100">
+                    </ng-template>
+                </ng-container>
+
+            </owl-carousel-o>
+        </div>
+        <div class="col-md-9 p-3">
+            <div>
+
+                <h2 class="h5 p-2">{{details.title}}</h2>
+
+                <p class="text-muted small">{{details.description}}</p>
+                <span>{{details.category.name}}</span>
+                <div class="d-flex align-items-center justify-content-between py-2">
+                    <span>{{details.price|currency:"EGP"}}</span>
+                    <p class="mb-0 "> <i *ngFor="let star of [1, 2, 3, 4, 5]" class="fas fa-star"
+                            [ngClass]="{'rating-color': details.ratingsAverage >= star}"></i>
+                        {{details.ratingsAverage}}</p>
+                </div>
+
+            </div>
+
+            <footer class="d-flex align-items-center justify-content-center ">
+                <button (click)="addProduct(details._id,btn)" class=" btn-main m-3" #btn>+Add to
+                    Cart</button>
+                <i class="fa-solid fa-heart heart mb-4 full" (click)="AddTowishlist(details._id)" role="button"></i>
+
+            </footer>
+
+        </div>
+    </div>
+</section>
