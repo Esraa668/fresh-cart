@@ -79,6 +79,7 @@ export class CartComponent implements OnInit {
       next: (info) => {
         if (info.message === 'success') {
           this.cart = null;
+          console.log(info);
           this.cartService.cartNumber.next(0);
         }
       },
