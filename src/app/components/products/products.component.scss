@@ -15,3 +15,25 @@ header {
     }
   }
 }
+
+@media (max-width: 800px) {
+  section {
+    .search {
+      width: 75% !important;
+    }
+  }
+}
+
+@media (max-width: 400px) {
+  section {
+    width: 90% !important;
+    .product_text {
+      font-size: 20px !important;
+      width: 100% !important;
+    }
+
+    .search {
+      width: 100% !important;
+    }
+  }
+}

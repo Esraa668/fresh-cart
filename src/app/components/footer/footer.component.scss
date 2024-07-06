@@ -1,3 +1,11 @@
-:host{
-    margin-top: auto;
+:host {
+  margin-top: auto;
+}
+@media (max-width: 580px) {
+  .footer {
+    flex-direction: column;
+  }
+  .footer-text {
+    font-size: 20px;
+  }
 }

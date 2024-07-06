@@ -78,6 +78,7 @@ export class ProductsComponent implements OnInit {
     this._WishlistService.AddTowishlist(id).subscribe({
       next: (response) => {
         this._toastr.info(response.message);
+        this._WishlistService.wishNumber.next(response.data.length);
 
         console.log(response);
       },

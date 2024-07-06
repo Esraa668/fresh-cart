@@ -4,7 +4,7 @@ header {
 
 .product {
   .btn-main {
-    transform: translateY(140%);
+    transform: translateY(150%);
     width: 100%;
     text-align: center;
   }
@@ -12,5 +12,43 @@ header {
   &:hover .btn-main {
     transform: translateY(0%);
     transition: all 0.7s;
+  }
+}
+@media (max-width: 950px) {
+  section {
+    .item {
+      flex-direction: column !important;
+    }
+  }
+  .section-home {
+    width: 90% !important;
+    .row {
+      gap: 1;
+    }
+  }
+}
+
+@media (max-width: 450px) {
+  section {
+    .height-slide {
+      height: 800px !important;
+    }
+    .product_text {
+      font-size: 20px !important;
+      width: 100%;
+    }
+
+    .item {
+      flex-direction: column !important;
+    }
+  }
+  .slide2 {
+    width: 100% !important;
+  }
+  .section-home {
+    width: 90% !important;
+    .row {
+      gap: 1;
+    }
   }
 }

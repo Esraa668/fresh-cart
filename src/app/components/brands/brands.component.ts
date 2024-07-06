@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { ProductService } from './../../core/service/product.service';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 @Component({
@@ -6,8 +8,17 @@ import { CommonModule } from '@angular/common';
   standalone: true,
   imports: [CommonModule],
   templateUrl: './brands.component.html',
-  styleUrls: ['./brands.component.scss']
+  styleUrls: ['./brands.component.scss'],
 })
-export class BrandsComponent {
-
+export class BrandsComponent implements OnInit {
+  constructor(private _ProductService: ProductService) {}
+  brands: any[] = [];
+  ngOnInit(): void {
+    this._ProductService.getbrands().subscribe({
+      next: (info) => {
+        this.brands = info.data;
+        console.log(this.brands);
+      },
+    });
+  }
 }

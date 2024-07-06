@@ -61,9 +61,9 @@ export class NavBlankComponent implements OnInit {
   @HostListener('window:scroll')
   scroll(): void {
     if (window.scrollY > 300) {
-      this.renderer.addClass(this.nav?.nativeElement, 'px-5');
+      this.renderer.addClass(this.nav?.nativeElement, 'px-4');
     } else {
-      this.renderer.removeClass(this.nav?.nativeElement, 'px-5');
+      this.renderer.removeClass(this.nav?.nativeElement, 'px-4');
     }
   }
 }

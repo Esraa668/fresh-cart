@@ -21,4 +21,7 @@ export class ProductService {
   getSubCategories(id: any): Observable<any> {
     return this._HttpClient.get(this.baseUrl + `categories/${id}`);
   }
+  getbrands(): Observable<any> {
+    return this._HttpClient.get(this.baseUrl + 'brands');
+  }
 }

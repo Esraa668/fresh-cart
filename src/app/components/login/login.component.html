@@ -6,7 +6,7 @@
             <label for="email">email:</label>
             <input type="email" class="form-control mt-1" formControlName="email" id="email" />
         </div>
-        <div class="alert alert-danger   p-1 m-1 w-50 mx-auto text-center  w-50 mx-auto text-center" *ngIf="
+        <div class="alert alert-danger error  p-1 m-1 w-50 mx-auto text-center  w-50 mx-auto text-center" *ngIf="
          loginGroup.get('email')?.errors &&loginGroup.get('email')?.touched
         ">
             <p *ngIf="loginGroup.get('email')?.getError('required')" class="m-0 my-1">
@@ -25,7 +25,7 @@
             <label for="password">password:</label>
             <input type="password" class="form-control mt-1" formControlName="password" id="password" />
         </div>
-        <div class="alert alert-danger   p-1 m-1 w-50 mx-auto text-center  w-50 mx-auto text-center" *ngIf="
+        <div class="alert alert-danger error  p-1 m-1 w-50 mx-auto text-center  w-50 mx-auto text-center" *ngIf="
           loginGroup.get('password')?.errors &&
           loginGroup.get('password')?.touched
         ">
@@ -50,11 +50,12 @@
 
         </div>
         <div *ngIf="err">
-            <p class="p-1 w-50 text-center mb-0 mx-auto alert alert-danger">
+            <p class="p-1 w-50 text-center mb-0 mx-auto alert alert-danger error">
                 {{err}}
 
             </p>
-            <p routerLink="/register" class="p-1 w-50 text-center mb-0 mx-auto alert alert-info mt-2">Don't have an
+            <p routerLink="/register" class="p-1 w-50 text-center mb-0 mx-auto alert alert-info mt-2 error">Don't have
+                an
                 account? Register Now.</p>
 
         </div>

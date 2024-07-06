@@ -34,17 +34,35 @@ export class CartComponent implements OnInit {
   }
 
   removeItem(id: any, element: HTMLButtonElement): void {
+    // Disable the button to prevent multiple clicks
     this.renderer2.setAttribute(element, 'disabled', 'true');
+
+    // Call the service to remove the cart item
     this.cartService.removeCartItem(id).subscribe({
       next: (info) => {
+        // Update the cart with the new data
         this.cart = info.data;
+
+        // Show a notification to the user
         this.toastr.warning('Item removed successfully from your cart');
+
+        // Re-enable the button
         this.renderer2.removeAttribute(element, 'disabled');
+
+        // Update the cart number
         this.cartService.cartNumber.next(info.numOfCartItems);
+
+        // Check if the cart is empty and clear it if needed
+        if (info.numOfCartItems === 0) {
+          this.cart = null;
+        }
       },
       error: (err) => {
+        // Re-enable the button on error
         this.renderer2.removeAttribute(element, 'disabled');
-        // Handle error
+
+        // Handle error (you might want to show an error message here)
+        this.toastr.error('An error occurred while removing the item');
       },
     });
   }

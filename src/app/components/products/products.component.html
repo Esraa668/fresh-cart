@@ -1,6 +1,6 @@
 <section class="w-75 mx-auto py-4" *ngIf="products.length>0">
-    <h2 class="m-3 text-main text-center">All products :</h2>
-    <input type="text" class="form-control  w-25 mx-auto mb-3  " placeholder="Search" [(ngModel)]="term">
+    <h2 class="m-3 text-main text-center product_text ">All products :</h2>
+    <input type="text" class="form-control  w-25 mx-auto mb-3  search" placeholder="Search" [(ngModel)]="term">
     <div class="row g-4">
         <div class=" col-sm-6 col-md-4  col-lg-4 col-xl-3" *ngFor="let product of products |search:term  | paginate: { id: 'product',
                                                       itemsPerPage: pageSize,

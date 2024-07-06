@@ -1,3 +1,26 @@
 .btn-main {
   padding: 7px 1px !important;
+  width: 100%;
+}
+@media (max-width: 1000px) {
+}
+@media (max-width: 750px) {
+  .direction {
+    flex-direction: column !important;
+  }
+}
+@media (max-width: 460px) {
+  section {
+    width: 100% !important;
+  }
+}
+
+.img {
+  width: 300px !important;
+}
+
+@media (max-width: 360px) {
+  .img {
+    width: 200px !important;
+  }
 }

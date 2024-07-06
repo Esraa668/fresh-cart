@@ -7,7 +7,7 @@
             <label for="name">name:</label>
             <input type="text" class="form-control mt-1" formControlName="name" id="name" />
         </div>
-        <div class="alert alert-danger p-1 m-1 w-50 mx-auto text-center  w-50 mx-auto text-center " *ngIf="
+        <div class="alert alert-danger error p-1 m-1 w-50 mx-auto text-center  w-50 mx-auto text-center " *ngIf="
          registerGroup.get('name')?.errors &&registerGroup.get('name')?.touched
         ">
             <p *ngIf="registerGroup.get('name')?.getError('required')" class="mb-0 mt-1 ">
@@ -28,7 +28,7 @@
             <label for="email">Email:</label>
             <input type="email" class="form-control mt-1" formControlName="email" id="email" />
         </div>
-        <div class="alert alert-danger p-1 m-1 w-50 mx-auto text-center " *ngIf="
+        <div class="alert alert-danger error p-1 m-1 w-50 mx-auto text-center " *ngIf="
          registerGroup.get('email')?.errors &&registerGroup.get('email')?.touched
         ">
             <p *ngIf="registerGroup.get('email')?.getError('required')" class="m-0 my-1">
@@ -45,9 +45,9 @@
         <!-- * pass -->
         <div class="mb-2">
             <label for="password">Password:</label>
-            <input type="password" class="form-control mt-1" formControlName="password" id="password" />
+            <input type="password" class="form-control mt-1 " formControlName="password" id="password" />
         </div>
-        <div class="alert alert-danger p-1 m-1 w-50 mx-auto text-center " *ngIf="
+        <div class="alert alert-danger error p-1 m-1 w-50 mx-auto text-center " *ngIf="
           registerGroup.get('password')?.errors &&
           registerGroup.get('password')?.touched
         ">
@@ -67,7 +67,7 @@
             <label for="rePassword">RePassword:</label>
             <input type="password" class="form-control mt-1" formControlName="rePassword" id="rePassword" />
         </div>
-        <div class="alert alert-danger p-1 m-1 w-50 mx-auto text-center " *ngIf="
+        <div class="alert alert-danger error p-1 m-1 w-50 mx-auto text-center " *ngIf="
           registerGroup.get('rePassword')?.errors &&
           registerGroup.get('rePassword')?.touched
         ">
@@ -87,7 +87,7 @@
             <label for="phone">Phone:</label>
             <input type="tel" class="form-control mt-1" formControlName="phone" id="phone" />
         </div>
-        <div class="alert alert-danger p-1 m-1 w-50 mx-auto text-center " *ngIf="
+        <div class="alert alert-danger p-1 m-1 w-50 mx-auto text-center error" *ngIf="
           registerGroup.get('phone')?.errors && registerGroup.get('phone')?.touched
         ">
             <p *ngIf="registerGroup.get('phone')?.getError('required')" class="m-0 my-1">

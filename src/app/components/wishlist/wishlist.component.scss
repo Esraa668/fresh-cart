@@ -15,3 +15,16 @@ header {
     transition: all 0.7s;
   }
 }
+
+@media (max-width: 950px) {
+  section {
+    .item {
+      flex-direction: column !important;
+    }
+  }
+}
+@media (max-width: 450px) {
+  section {
+    width: 100% !important;
+  }
+}

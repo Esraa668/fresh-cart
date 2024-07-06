@@ -3,17 +3,64 @@
         <h1 class="h3 text-main"> Check Out Session :</h1>
         <div class="form-item w-75 mx-auto">
 
-            <label class="my-2" for="details">details:</label>
-            <input type="text" class="form-control  " formControlName="details" id="details" />
+            <label class="my-2" for="Name">Name:</label>
+            <input type="text" class="form-control  " formControlName="details" id="Name" />
         </div>
+        <div class="alert alert-danger error p-1 m-1 w-50 mx-auto text-center  item " *ngIf="
+        PaymentGroup.get('details')?.errors &&PaymentGroup.get('details')?.touched
+       ">
+            <p *ngIf="PaymentGroup.get('details')?.getError('required')" class="mb-0 mt-1 ">
+                <i class="fa-solid fa-triangle-exclamation ps-1"></i>
+                Name Required
+            </p>
+            <p *ngIf="PaymentGroup.get('details')?.getError('minlength')" class="mb-0 mt-1">
+                <i class="fa-solid fa-triangle-exclamation ps-1"></i>
+                Name Min length
+            </p>
+            <p *ngIf="PaymentGroup.get('details')?.getError('maxlength')" class="mb-0 mt-1">
+                <i class="fa-solid fa-triangle-exclamation ps-1"></i>
+                Name Max length
+            </p>
+        </div>
+
 
         <div class="form-item w-75 mx-auto">
             <label class="my-2" for="phone">phone:</label>
             <input type="tel" class="form-control  " formControlName="phone" id="phone" />
         </div>
+        <div class="alert alert-danger p-1 m-1 w-50 mx-auto text-center item error" *ngIf="
+        PaymentGroup.get('phone')?.errors && PaymentGroup.get('phone')?.touched
+      ">
+            <p *ngIf="PaymentGroup.get('phone')?.getError('required')" class="m-0 my-1">
+                <i class="fa-solid fa-triangle-exclamation ps-1"></i>
+                phone Required
+            </p>
+
+            <p *ngIf="PaymentGroup.get('phone')?.getError('pattern')" class="m-0 my-1">
+                <i class="fa-solid fa-triangle-exclamation ps-1"></i>
+
+                accept only egypt phone numbers
+            </p>
+        </div>
         <div class="form-item w-75 mx-auto">
             <label class="my-2" for="city">city:</label>
             <input type="text" class="form-control  " formControlName="city" id="city" />
+        </div>
+        <div class="alert alert-danger error p-1 m-1 w-50 mx-auto text-center item  " *ngIf="
+        PaymentGroup.get('city')?.errors &&PaymentGroup.get('city')?.touched
+       ">
+            <p *ngIf="PaymentGroup.get('city')?.getError('required')" class="mb-0 mt-1 ">
+                <i class="fa-solid fa-triangle-exclamation ps-1"></i>
+                Name Required
+            </p>
+            <p *ngIf="PaymentGroup.get('city')?.getError('minlength')" class="mb-0 mt-1">
+                <i class="fa-solid fa-triangle-exclamation ps-1"></i>
+                Name Min length
+            </p>
+            <p *ngIf="PaymentGroup.get('city')?.getError('maxlength')" class="mb-0 mt-1">
+                <i class="fa-solid fa-triangle-exclamation ps-1"></i>
+                Name Max length
+            </p>
         </div>
         <button class="btn-main mt-3 mx-auto text-center d-block">Check Out<i class="fa-solid fa-check"></i></button>
 

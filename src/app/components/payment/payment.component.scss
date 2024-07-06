@@ -1,0 +1,24 @@
+@media (max-width: 750px) {
+  section {
+    width: 75% !important;
+    .item {
+      width: 75% !important;
+    }
+  }
+}
+@media (max-width: 650px) {
+  section {
+    width: 100% !important;
+    .item {
+      width: 75% !important;
+    }
+  }
+}
+@media (max-width: 450px) {
+  section {
+    width: 100% !important;
+    .item {
+      width: 100% !important;
+    }
+  }
+}

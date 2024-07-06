@@ -6,8 +6,8 @@
                     (click)="removeItem(product._id)"></i>
                 <header [routerLink]="['/details', product._id]">
                     <img [src]="product.imageCover" [alt]="product.title" class="w-100" [title]="product.title">
-                    <h3 class="small">{{ product.title }}</h3>
-                    <div class="d-flex align-items-center justify-content-between py-1">
+                    <h3 class="small">{{ product.title | cuttext: 3}}</h3>
+                    <div class="d-flex align-items-center justify-content-between py-1 item">
                         <span>{{ product.price | currency: 'E£' }}</span>
                         <p class="mb-0">
                             <i *ngFor="let star of [1, 2, 3, 4, 5]" class="fas fa-star"

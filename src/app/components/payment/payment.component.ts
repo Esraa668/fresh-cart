@@ -2,7 +2,12 @@ import { CartService } from 'src/app/core/service/cart.service';
 import { ActivatedRoute } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import {
+  FormControl,
+  FormGroup,
+  ReactiveFormsModule,
+  Validators,
+} from '@angular/forms';
 
 @Component({
   selector: 'app-payment',
@@ -19,9 +24,20 @@ export class PaymentComponent implements OnInit {
   ) {}
 
   PaymentGroup: FormGroup = new FormGroup({
-    details: new FormControl(''),
-    phone: new FormControl(''),
-    city: new FormControl(''),
+    details: new FormControl('', [
+      Validators.required,
+      Validators.minLength(3),
+      Validators.maxLength(20),
+    ]),
+    phone: new FormControl('', [
+      Validators.required,
+      Validators.pattern(/^01[0125][0-9]{8}$/),
+    ]),
+    city: new FormControl('', [
+      Validators.required,
+      Validators.minLength(3),
+      Validators.maxLength(40),
+    ]),
   });
 
   ngOnInit(): void {

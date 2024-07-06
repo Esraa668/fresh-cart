@@ -7,11 +7,12 @@ import { CarouselModule, OwlOptions } from 'ngx-owl-carousel-o';
 import { Details } from 'src/app/core/interface/details';
 import { ToastrService } from 'ngx-toastr';
 import { WishlistService } from 'src/app/core/service/wishlist.service';
+import { CuttextPipe } from 'src/app/core/pipe/cuttext.pipe';
 
 @Component({
   selector: 'app-detail',
   standalone: true,
-  imports: [CommonModule, CarouselModule],
+  imports: [CommonModule, CarouselModule, CuttextPipe],
   templateUrl: './detail.component.html',
   styleUrls: ['./detail.component.scss'],
 })
@@ -31,6 +32,8 @@ export class DetailComponent implements OnInit {
     this._Renderer2.setAttribute(element, 'disabled', 'true');
     this._CartService.AddToCart(id).subscribe({
       next: (response) => {
+        this._CartService.cartNumber.next(response.numOfCartItems);
+
         this._toastr.success(response.message);
         this._Renderer2.removeAttribute(element, 'disabled');
       },
@@ -62,6 +65,7 @@ export class DetailComponent implements OnInit {
     this._WishlistService.AddTowishlist(id).subscribe({
       next: (response) => {
         this._toastr.info(response.message);
+        this._WishlistService.wishNumber.next(response.data.length);
 
         console.log(response);
       },
@@ -81,5 +85,19 @@ export class DetailComponent implements OnInit {
     navText: ['', ''],
     items: 1,
     nav: false,
+    responsive: {
+      0: {
+        items: 1,
+      },
+      400: {
+        items: 2,
+      },
+      740: {
+        items: 3,
+      },
+      940: {
+        items: 4,
+      },
+    },
   };
 }

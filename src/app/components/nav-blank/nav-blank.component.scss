@@ -1,3 +1,48 @@
 nav {
   transition: padding 1s;
 }
+@media (max-width: 300px) {
+  .logo {
+    width: 120px;
+  }
+  .nav-items {
+    width: 35px !important;
+    padding: 0 !important;
+  }
+  .icon {
+    font-size: 15px;
+  }
+}
+
+@media (max-width: 300px) {
+  .logo {
+    width: 120px;
+  }
+  .nav-items {
+    width: 35px !important;
+    padding: 0 !important;
+  }
+  .icon {
+    font-size: 15px;
+  }
+}
+@media (max-width: 1000px) {
+  section {
+    margin-inline: 20px !important;
+  }
+}
+@media (max-width: 800px) {
+  .nav-list {
+    padding: 0 !important;
+  }
+
+  .display {
+    gap: 10px;
+    margin-block: 10px !important;
+  }
+}
+@media (max-width: 800px) {
+  .hide {
+    display: none !important;
+  }
+}
